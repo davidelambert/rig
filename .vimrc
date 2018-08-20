@@ -35,4 +35,7 @@ set expandtab
 set showmatch
 set linespace=2
 set breakindent
+<<<<<<< HEAD
 colorscheme elflord
+=======
+>>>>>>> 91fc40273e01f614d950b28d2afc68b708b91a5a
