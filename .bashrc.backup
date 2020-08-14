@@ -115,19 +115,33 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export PATH=/usr/local/bin/stata15:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/stata15:/usr/local/bin/mathematica
 
-# added by Anaconda3 installer
-# export PATH="/home/delamb/anaconda3/bin:$PATH"
+
+
+
+
+# ============================================================================
+
+
+
+
+
+# BEGIN USER ADDITIONS
+# ===========================================================================
+
 
 # Theoretically autstarts a tmux session - and it actually does!
-tmux attach &> /dev/null
-if [[ ! $TERM =~ screen ]]; then
-        exec tmux
-fi
+# tmux attach &> /dev/null
+# if [[ ! $TERM =~ screen ]]; then
+#         exec tmux
+# fi
 
 # Display git branch in PS1 prompt
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
-export PS1="\u \[\033[01;32m\]\w\[\033[01;34m\]\$(parse_git_branch)\[\033[00m\] $ "
+export PS1="\n\n\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;220m\]\u@\h:\[$(tput sgr0)\] \w\[$(tput bold)\]\[\033[38;5;76m\]\$(parse_git_branch) \n\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;220m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
+
+
+# change background highlighting on "other writable" to light blue/black text
+export LS_COLORS="$LS_COLORS:ow=1;30;44:"
