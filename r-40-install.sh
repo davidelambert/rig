@@ -3,7 +3,7 @@
 # NOTE: run as root, obviously
 
 # update indices
-apt update -qq
+apt update 
 
 # install helper packages
 apt install --no-install-recommends software-properties-common dirmngr
@@ -24,7 +24,8 @@ add-apt-repository ppa:c2d4u.team/c2d4y4.0+
 apt update
 
 # install base R & external tidyverse dependencies
-apt install --no-install-recommends r-base r-base-dev libssl-dev libcurl4-openssl-dev -y
+apt install r-base r-base-dev libssl-dev libcurl4-openssl-dev -y
 
 # install tidyverse packages
-apt install --no-install-recommends r-cran-tidyverse -y
+apt install r-cran-tidyverse -y
+
