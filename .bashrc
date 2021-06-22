@@ -146,7 +146,7 @@ parse_git_branch() {
 
 
 # PS1 prompt
-export PS1="\n\n\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;220m\]\u@\h:\[$(tput sgr0)\] \w\[$(tput bold)\]\[\033[38;5;76m\]\$(parse_git_branch) \n\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;220m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
+export PS1="\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;220m\]\u@\h:\[$(tput sgr0)\] \w\[$(tput bold)\]\[\033[38;5;76m\]\$(parse_git_branch) \n\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;220m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
 
 
 # change background highlighting on "other writable" to dark green text
@@ -157,4 +157,20 @@ export LS_COLORS="$LS_COLORS:ow=38;5;34"
 
 
 
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/delamb/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/delamb/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/delamb/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/delamb/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 

@@ -130,18 +130,31 @@ fi
 # ===========================================================================
 
 
-# Theoretically autstarts a tmux session - and it actually does!
+# # Uncomment this block to auto-start a tmux session
 # tmux attach &> /dev/null
 # if [[ ! $TERM =~ screen ]]; then
 #         exec tmux
 # fi
 
-# Display git branch in PS1 prompt
+
+
+# ====== PROMPT & COLORS =======
+# Function to display git branch in PS1 prompt
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
+
+
+# PS1 prompt
 export PS1="\n\n\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;220m\]\u@\h:\[$(tput sgr0)\] \w\[$(tput bold)\]\[\033[38;5;76m\]\$(parse_git_branch) \n\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;220m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
 
 
-# change background highlighting on "other writable" to light blue/black text
-export LS_COLORS="$LS_COLORS:ow=1;30;44:"
+# change background highlighting on "other writable" to dark green text
+export LS_COLORS="$LS_COLORS:ow=38;5;34"
+# ====== END PROMPT & COLORS ==============
+
+
+
+
+
+
