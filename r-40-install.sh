@@ -18,13 +18,13 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB
 add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -sc)-cran40/"
 
 # add full CRAN repository for R4.0+
-add-apt-repository ppa:c2d4u.team/c2d4y4.0+
+add-apt-repository ppa:c2d4u.team/c2d4u4.0+
 
 # update APT
 apt update
 
-# install base R & external tidyverse dependencies
-apt install r-base r-base-dev libssl-dev libcurl4-openssl-dev -y
+# install base R
+apt install r-base r-base-dev -y
 
 # install tidyverse packages
 apt install r-cran-tidyverse -y
