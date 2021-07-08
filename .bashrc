@@ -154,18 +154,3 @@ export LS_COLORS="$LS_COLORS:ow=38;5;34"
 # ====== END PROMPT & COLORS ==============
 
 
-# add user binary paths to PATH if they exist
-if [ -d "$HOME/bin" ] ; then
-    export PATH="$HOME/bin:$PATH"
-fi
-
-if [ -d "$HOME/.local/bin" ] ; then
-    export PATH="$HOME/.local/bin:$PATH"
-fi
-
-
-
-# virtualenvwrapper stuff - uncomment after installing
-# export WORKON_HOME=$HOME/.virtualenvs
-# export PROJECT_HOME=$HOME
-# source $HOME/.local/bin/virtualenvwrapper.sh
