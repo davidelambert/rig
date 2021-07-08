@@ -27,5 +27,5 @@ apt update
 apt install r-base r-base-dev -y
 
 # install tidyverse packages
-apt install r-cran-tidyverse -y
+# apt install r-cran-tidyverse -y
 
