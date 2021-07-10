@@ -1,0 +1,24 @@
+
+
+
+# USER ADDITIONS (append with: cat dotfiles/.bashrc_additons >> ~/.bashrc)
+# ===========================================================================
+
+# ====== PROMPT & COLORS =======
+# Function to display git branch in PS1 prompt
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+# newline before PS1
+PROMPT_COMMAND="printf '\n'"
+
+# PS1 prompt
+export PS1="\n\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;135m\]\u@\h:\[$(tput sgr0)\] \w\[$(tput bold)\]\$(parse_git_branch) \n\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;135m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
+
+
+# change background highlighting on "other writable" to dark green text
+export LS_COLORS="$LS_COLORS:ow=38;5;34"
+# ====== END PROMPT & COLORS ==============
+
+
