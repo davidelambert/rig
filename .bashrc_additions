@@ -14,7 +14,7 @@ parse_git_branch() {
 PROMPT_COMMAND="printf '\n'"
 
 # PS1 prompt
-export PS1="\n\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;135m\]\u@\h:\[$(tput sgr0)\] \w\[$(tput bold)\]\$(parse_git_branch) \n\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;135m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
+PS1="\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;135m\]\u@\h:\[$(tput sgr0)\] \w\[$(tput bold)\]\$(parse_git_branch) \n\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;135m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
 
 
 # change background highlighting on "other writable" to dark green text
