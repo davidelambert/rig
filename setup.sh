@@ -14,6 +14,8 @@
 # bash stuff
 cp dotfiles/.bash_profile ~/.bash_profile
 cat dotfiles/.bashrc_additions >> ~/.bashrc
+source ~/.bash_profile
+source ~/.bashrc
 
 
 # vim stuff
@@ -25,4 +27,5 @@ vim +PluginInstall +qall
 # tmux stuff
 cp dotfiles/.tmux.conf ~/.tmux.conf
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 
