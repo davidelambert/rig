@@ -19,7 +19,7 @@ case $1 in
         # Start JACK
         # NOTE: period 128 seems to be max for fluisynth not sucking
         pasuspender -- \
-            jackd -d alsa --device hw:0 --rate 44100 --period 64 \
+            jackd -d alsa --device hw:0 --rate 44100 --period 256 \
                 &>/tmp/jackd.out &
 
         sleep .5
@@ -60,7 +60,14 @@ case $1 in
 
         ;;
 
+    status )
+        pgrep -x jackd && echo "JACK is running." || echo "JACK is stopped."
+        sleep .5
+        pgrep -x fluidsynth && echo "fluidsynth is running." || echo "fluidsynth is stopped."
+        sleep .5
+        ;;
+
     * )
-        echo Please specify on or off...
+        echo Please specify on, off, or status...
         ;;
 esac
