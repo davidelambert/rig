@@ -3,8 +3,9 @@
 # ====================================
 # setup.sh
 # 
-# Sets up preferred Linux command line environment
-# with .bashrc, .bash_profile, .vimrc + vim plugins,
+# Sets up preferred Linux command line environment:
+# .bashrc & .profile
+# .vimrc & vim plugins
 # .tmux.conf & tmux plugins
 
 # after cloning dotfiles, copy this script into home & run
@@ -12,7 +13,7 @@
 # ====================================
 
 # bash stuff
-cp dotfiles/.bash_profile ~/.bash_profile
+cp dotfiles/.profile ~/.profile
 cat dotfiles/.bashrc_additions >> ~/.bashrc
 source ~/.bash_profile
 source ~/.bashrc
