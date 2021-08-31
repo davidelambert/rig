@@ -8,25 +8,25 @@
 # .vimrc & vim plugins
 # .tmux.conf & tmux plugins
 
-# after cloning dotfiles, copy this script into home & run
+# after cloning configs, copy this script into home & run
 
 # ====================================
 
 # bash stuff
-cp dotfiles/.profile ~/.profile
-cat dotfiles/.bashrc_additions >> ~/.bashrc
-source ~/.bash_profile
+cp configs/.profile ~/.profile
+cat configs/.bashrc_additions >> ~/.bashrc
+source ~/.profile
 source ~/.bashrc
 
 
 # vim stuff
-cp dotfiles/.vimrc ~/.vimrc
+cp configs/.vimrc ~/.vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
 
 # tmux stuff
-cp dotfiles/.tmux.conf ~/.tmux.conf
+cp configs/.tmux.conf ~/.tmux.conf
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 
