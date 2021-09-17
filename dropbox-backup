@@ -1,7 +1,22 @@
 #!/bin/bash
 
-# print date header to log
-printf "\n\n\nDROPBOX BACKUP SYNC $(date '+%F')\n$(printf '=%.0s' {1..30})\n" >> /home/delamb/.dropbox-backup.log
+# Incrementally backs up user's entire Dropbox directory to another location,
+# and logs rsync output
+#
+# Usage: Copy script to a $PATH directory
+#        Set BACKUP_DRIVE variable below
+#        Add a dropbox-backup line to user's crontab (via crontab -e)
+#
+# Example crontab entry, sycing daily at 4:00am:
+# 0 4 1-31 * * dropbox-backup
+
+BACKUP_DRIVE=/path/to/backup/directory
+
+# print datetime header to log
+printf "DROPBOX BACKUP SYNC $(date '+%F %H:%M:%S')\n$(printf '=%.0s' ={1..39})\n" >> $HOME/.dropbox-backup.log
 
 # rsync Dropbox directory and log verbose output
-rsync -avz /home/delamb/Dropbox /media/delamb/backup >> /home/delamb/.dropbox-backup.log
+rsync -avz $HOME/Dropbox $BACKUP_DRIVE >> $HOME/.dropbox-backup.log
+
+# print visual separator
+printf "\n$(printf -- '-%.0s' {1..72})\n\n\n\n\n" >> $HOME/.dropbox-backup.log
