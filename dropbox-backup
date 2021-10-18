@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# ==================================================================
+# Backs up user's entire Dropbox directory to a separate local or
+# remote directory via rsync. Intended for use as a cron job.
+# Set $BACKUP_DRIVE, $BACKUP_DIR, $THIS_LOG variables appropriately.
+# Make sure script is executable & on user's $PATH.
+# 
+# Sample crontab entry, running daily at 4:00am:
+# 0 4 * * * /home/delamb/.local/bin/dropbox-backup 
+# ==================================================================
+
 BACKUP_DRIVE=/media/delamb/backup
 BACKUP_DIR=$HOME/.dropbox-backup
 TODAY=$(date '+%F')
