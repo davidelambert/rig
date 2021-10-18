@@ -1,22 +1,26 @@
 #!/bin/bash
 
-# Incrementally backs up user's entire Dropbox directory to another location,
-# and logs rsync output
-#
-# Usage: Copy script to a $PATH directory
-#        Set BACKUP_DRIVE variable below
-#        Add a dropbox-backup line to user's crontab (via crontab -e)
-#
-# Example crontab entry, sycing daily at 4:00am:
-# 0 4 1-31 * * dropbox-backup
+BACKUP_DRIVE=/media/delamb/backup
+BACKUP_DIR=$HOME/.dropbox-backup
+TODAY=$(date '+%F')
+LASTMONTH=$(date '+%F' -d '30 days ago')
+THIS_LOG=$BACKUP_DIR/dropbox-backup_$TODAY.log
 
-BACKUP_DRIVE=/path/to/backup/directory
+# create backup directory if it doesn't exist
+if [ ! -d "$BACKUP_DIR" ] ; then
+    mkdir $BACKUP_DIR
+fi
 
 # print datetime header to log
-printf "DROPBOX BACKUP SYNC $(date '+%F %H:%M:%S')\n$(printf '=%.0s' ={1..39})\n" >> $HOME/.dropbox-backup.log
+printf "DROPBOX BACKUP SYNC $(date '+%F %H:%M:%S')\n$(printf '=%.0s' ={1..39})\n" >> $THIS_LOG
 
 # rsync Dropbox directory and log verbose output
-rsync -avz $HOME/Dropbox $BACKUP_DRIVE >> $HOME/.dropbox-backup.log
+rsync -avz $HOME/Dropbox $BACKUP_DRIVE >> $THIS_LOG
 
-# print visual separator
-printf "\n$(printf -- '-%.0s' {1..72})\n\n\n\n\n" >> $HOME/.dropbox-backup.log
+# print two blank lines, in case of multiple (manual) backups per day
+printf "\n\n" >> $THIS_LOG
+
+# delete log from 30 days ago, if it exists
+if [ -f "$BACKUP_DIR/dropbox-backup_$LASTMONTH.log" ] ; then
+    rm $BACKUP_DIR/dropbox-backup_$LASTMONTH.log
+fi

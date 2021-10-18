@@ -1,0 +1,12 @@
+#!/bin/bash
+
+BACKUP_DRIVE=/media/delamb/backup
+
+# print datetime header to log
+printf "DROPBOX BACKUP SYNC $(date '+%F %H:%M:%S')\n$(printf '=%.0s' ={1..39})\n" >> $HOME/.dropbox-backup.log
+
+# rsync Dropbox directory and log verbose output
+rsync -avz $HOME/Dropbox $BACKUP_DRIVE >> $HOME/.dropbox-backup.log
+
+# print visual separator
+printf "\n$(printf -- '-%.0s' {1..72})\n\n\n\n\n" >> $HOME/.dropbox-backup.log
