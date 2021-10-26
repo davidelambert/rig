@@ -3,8 +3,11 @@
 # ==================================================================
 # Backs up user's entire Dropbox directory to a separate local or
 # remote directory via rsync. Intended for use as a cron job.
-# Set $BACKUP_DRIVE, $BACKUP_DIR, $THIS_LOG variables appropriately.
-# Make sure script is executable & on user's $PATH.
+#
+# Set $BACKUP_DRIVE, $BACKUP_DIR, $DELETE_OFFSET, and  $THIS_LOG
+# variables appropriately.
+#
+# Make sure script is executable and on user's $PATH.
 # 
 # Sample crontab entry, running daily at 4:00am:
 # 0 4 * * * /home/delamb/.local/bin/dropbox-backup 
@@ -13,7 +16,7 @@
 BACKUP_DRIVE=/media/delamb/backup
 BACKUP_DIR=$HOME/.dropbox-backup
 TODAY=$(date '+%F')
-LASTMONTH=$(date '+%F' -d '30 days ago')
+DELETE_OFFSET=$(date '+%F' -d '90 days ago')
 THIS_LOG=$BACKUP_DIR/dropbox-backup_$TODAY.log
 
 # create backup directory if it doesn't exist
@@ -30,7 +33,7 @@ rsync -avz $HOME/Dropbox $BACKUP_DRIVE >> $THIS_LOG
 # print two blank lines, in case of multiple (manual) backups per day
 printf "\n\n" >> $THIS_LOG
 
-# delete log from 30 days ago, if it exists
-if [ -f "$BACKUP_DIR/dropbox-backup_$LASTMONTH.log" ] ; then
-    rm $BACKUP_DIR/dropbox-backup_$LASTMONTH.log
+# delete log from ($DELETE_OFFSET) days ago, if it exists
+if [ -f "$BACKUP_DIR/dropbox-backup_$DELETE_OFFSET.log" ] ; then
+    rm $BACKUP_DIR/dropbox-backup_$DELETE_OFFSET.log
 fi
