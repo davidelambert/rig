@@ -1,32 +1,31 @@
 #!/bin/bash
 
 # ====================================
-# setup.sh
+# cli_setup.sh
 # 
 # Sets up preferred Linux command line environment:
 # .bashrc & .profile
 # .vimrc & vim plugins
 # .tmux.conf & tmux plugins
 
-# after cloning configs, copy this script into home & run
+# copy this script into home & run
 
 # ====================================
 
 # bash stuff
-cp configs/.profile ~/.profile
-cat configs/.bashrc_additions >> ~/.bashrc
+cp rig/.profile ~/
+cat rig/.bashrc_additions >> ~/.bashrc
+cp rig/.bash_aliases ~/
 source ~/.profile
-source ~/.bashrc
 
 
 # vim stuff
-cp configs/.vimrc ~/.vimrc
+cp rig/.vimrc ~/
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
 
 # tmux stuff
-cp configs/.tmux.conf ~/.tmux.conf
+cp rig/.tmux.conf ~/
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
 

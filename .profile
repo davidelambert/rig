@@ -8,7 +8,14 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-# if running bash
+# pyenv stuff
+if [ -d "$HOME/.pyenv" ] ; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH=$PYENV_ROOT/bin:$PATH
+    eval "$(pyenv init --path)"
+fi
+
+# always source .bashrc if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
@@ -16,24 +23,12 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes user's private bin if it exists
+# include user's .local/bin in PATH
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# virtualenvwrapper stuff
-if [ -f "$HOME/.local/bin/virtualenvwrapper.sh" ] ; then
-    export WORKON_HOME=$HOME/.virtualenvs
-    export PROJECT_HOME=$HOME
-    source $HOME/.local/bin/virtualenvwrapper.sh
-fi
-
-# stata stuff
+# include stata in PATH
 if [ -d "$HOME/.local/stata16" ] ; then
     export PATH="$HOME/.local/stata16:$PATH"
 fi
