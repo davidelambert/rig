@@ -1,5 +1,4 @@
-" Look & Feel
-" ============
+" LOOK & FEEL
 syntax on
 set autoread
 set number
