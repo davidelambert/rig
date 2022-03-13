@@ -1,0 +1,9 @@
+[user]
+	name = David E. Lambert
+	email = david@davidelambert.com
+[core]
+	editor = vim
+[diff]
+	tool = vimdiff
+[init]
+	defaultBranch = main
