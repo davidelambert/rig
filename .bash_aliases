@@ -19,3 +19,5 @@ alias reboot-aws="aws ec2 reboot-instances --instance-ids $(cat $HOME/.aws/.dela
 alias r="radian"
 
 alias ul="sudo apt update ; apt list -u"
+
+alias clunker="ssh clunker.lan -t bash"
