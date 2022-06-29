@@ -1,15 +1,13 @@
 
 
 # ================ BEGIN USER ADDITIONS ============================== 
-# install: `sudo cat rig/.bashrc_additons >> /root/.bashrc`
-
 # display git branch in PS1
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
 # newline before PS1
-PROMPT_COMMAND="printf '\n'"
+# PROMPT_COMMAND="printf '\n'"
 
 # PS1 prompt
 PS1="\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;196m\]\u@\h:\[$(tput sgr0)\] \w\[$(tput bold)\]\$(parse_git_branch) \n\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;196m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
