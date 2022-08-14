@@ -10,10 +10,10 @@ parse_git_branch() {
 }
 
 # newline before PS1
-PROMPT_COMMAND="printf '\n'"
+# PROMPT_COMMAND="printf '\n'"
 
-# PS1 prompt
-PS1="\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;135m\]\u@\h:\[$(tput sgr0)\] \w\[$(tput bold)\]\$(parse_git_branch) \n\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;135m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
+# PS1 prompt: 35m is a minty green
+PS1="\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;35m\]\u@\h:\[$(tput sgr0)\] \w\[$(tput bold)\]\$(parse_git_branch) \n\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;35m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
 
 # initialize pyenv if installed
 if command -v pyenv &> /dev/null ; then
