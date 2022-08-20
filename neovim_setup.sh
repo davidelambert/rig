@@ -1,14 +1,13 @@
 #!/bin/bash
 
-# ======================
 # neovim_setup.sh
-#
-# run from ~/rig/ with sudo
-# ======================
+# run with sudo
 
-curl -fsSL https://deb.nodesource.com/setup_lts.x | -E bash -
 apt update
-apt install nodejs curl gcc g++ make build-essential
+apt install curl gcc g++ make build-essential
+curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
+apt update
+apt install nodejs 
 if [ ! -d "~/.config/nvim/" ] ; then
     mkdir ~/.config/nvim/
 fi
